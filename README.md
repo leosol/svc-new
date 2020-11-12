@@ -1,12 +1,15 @@
 # SVC-NEW Ransomware
 Just sharing some knoledge related to SVC-NEW (a type of ransomware in linux environments - MD5 4bb2f87100fca40bfbb102e48ef43e65). 
-...
-I'm just an amateur trying to learn a little bit of reverse engineering. So, I appreciate tips, suggestions and criticisms too, especially those that help me improve! I hope it will be useful in some way. Good luck!
+
+**Summary**: 
+Encryption ratio was only 0.3% of a 1GB file - located at the begining of the file (see samples)
+
+
 
 ### Ransomware logic - based on file size
-This ransomware loads a table with the behavior based on file size.
-At first, you can find this table under global named variable **Ransom_Logic**.
-Even rows are file size indexes. Odd rows are the size of encrypted blocks.
+This ransomware loads a table with it's behavior based on file size.
+At first, you can find this table under global variable **Ransom_Logic**.
+*Even* rows are file size indexes. *Odd* rows are the size of encrypted blocks. 
 
 ![Alt text](pictures/Capture-Dump-Ransom-Logic.PNG?raw=true "Mem Dump")
 
@@ -25,7 +28,7 @@ Even rows are file size indexes. Odd rows are the size of encrypted blocks.
 11. 0x800000        0x1900000000
 ```
 This table can be translated to decimal/byte values below.
-I did some testing with different file sizes and noticed that the part of the code that calculates the number of blocks that should be read ***was only returning 1*** as number of blocks. Meaning that only one block should be encrypted. My max file had **1GB** of size.
+I did some testing with different file sizes and noticed that the part of the code that calculates the number of blocks that should be encrypted ***was only returning 1*** as number of blocks meaning that only one block should be encrypted (maybe a bug). My max file had **1GB** of size. Samples can be found here (ziped) [a link](./samples/).
 
 ```
 0x0           0xa00000      => 0x100000 (10240 bytes) 
@@ -52,5 +55,6 @@ I did some testing with different file sizes and noticed that the part of the co
 ```
 
 ### File recovery based on backup
-I'm not sure but maybe, you can be able to recover your files if you have a *backup* and the modified part of didn't change. If you work in a data center with multiple backups, it can be nice to compare the modified part with more than one backup. Guess that the larger the file, more chances you have. 
+I'm not sure but, maybe, you can be able to recover your files if you have a *backup* and the encrypted part of it didn't change. If you work in a data center with multiple backups, it can be nice to compare the encrypted part with more than one backup. Guess that the larger the file, more chances you have to recover your data. 
+
 **Don't forget to take out the last 512 bytes of the RSA signature!**
