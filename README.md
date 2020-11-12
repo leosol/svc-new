@@ -43,6 +43,14 @@ I did some testing with different file sizes and noticed that the part of the co
 107374182400-> 109951162777600 (110 TB)  (8388608 bytes encrypted, you already know right?)
 ```
 
+### Encryption Ratio - only 0.3% of a 1GB file
+```sh
+-rw-r--r-- 1 leandro leandro      10240 Nov 11 15:10  file1.txt => (100%)
+-rw-r--r-- 1 leandro leandro   20972032 Nov 11 15:12  file2.txt => (4%)
+-rw-r--r-- 1 leandro leandro  167772160 Nov 11 15:10  file3.txt => (1.25%)
+-rw-r--r-- 1 leandro leandro 1342110020 Nov 11 15:11  file4.txt => (0.3124%)
+```
+
 ### File recovery based on backup
 I'm not sure but maybe, you can be able to recover your files if you have a *backup* and the modified part of didn't change. If you work in a data center with multiple backups, it can be nice to compare the modified part with more than one backup. Guess that the larger the file, more chances you have. 
 **Don't forget to take out the last 512 bytes of the RSA signature!**
