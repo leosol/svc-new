@@ -58,3 +58,11 @@ I did some testing with different file sizes and noticed that the part of the co
 I'm not sure but, maybe, you can be able to recover your files if you have a *backup* and the encrypted part of it didn't change. If you work in a data center with multiple backups, it can be nice to compare the encrypted part with more than one backup. Guess that the larger the file, more chances you have to recover your data. 
 
 **Don't forget to take out the last 512 bytes of the RSA signature!**
+
+### Decrypt with known key
+Suppose that you have a key. Try using aes decrypter available at [decrypter](./decripter/).
+Example of a command (dont forget to unzip de ELF):
+```sh
+./svc-decrypter ffa92c4715820aa5f810e2ac858ba193aa03f4185a6e2de4b69cdb6e74570f14 file3.txt.abc888-60816d85 /tmp/f2 10240 1
+```
+
