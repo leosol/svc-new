@@ -28,7 +28,7 @@ At first, you can find this table under global variable **Ransom_Logic**.
 11. 0x800000        0x1900000000
 ```
 This table can be translated to decimal/byte values below.
-I did some testing with different file sizes and noticed that the part of the code that calculates the number of blocks that should be encrypted ***was only returning 1*** as number of blocks meaning that only one block should be encrypted (maybe a bug). My max file had **1GB** of size. Samples can be found here (ziped) [a link](./samples/).
+I did some testing with different file sizes and noticed that the part of the code that calculates the number of blocks that should be encrypted ***was only returning 1*** as number of blocks meaning that only one block should be encrypted (maybe a bug). My max file had **1GB** of size. Samples can be found here (ziped): [samples](./samples/).
 
 ```
 0x0           0xa00000      => 0x100000 (10240 bytes) 
