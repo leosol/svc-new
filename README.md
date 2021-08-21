@@ -1,4 +1,4 @@
-# SVC-NEW Ransomware
+# SVC-NEW (RansomExx) 
 Just sharing some knoledge related to SVC-NEW (a type of ransomware in linux environments - MD5 4bb2f87100fca40bfbb102e48ef43e65). 
 
 **Summary**: 
